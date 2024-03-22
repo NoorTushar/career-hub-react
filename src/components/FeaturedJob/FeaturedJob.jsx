@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
 import { SlLocationPin } from "react-icons/sl";
 import { FaDollarSign } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const FeaturedJob = ({ featuredJob }) => {
-   console.log(featuredJob);
    const {
+      id,
       company_name,
       logo,
       job_title,
@@ -24,7 +25,7 @@ const FeaturedJob = ({ featuredJob }) => {
    return (
       <div className="card bg-base-100 shadow-xl border">
          <figure className="mt-8">
-            <img src={logo} alt />
+            <img src={logo} />
          </figure>
          <div className="card-body">
             <h2 className="card-title">{job_title}</h2>
@@ -50,9 +51,11 @@ const FeaturedJob = ({ featuredJob }) => {
             </div>
 
             <div className="card-actions mt-4">
-               <button className="btn text-white bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">
-                  View Details
-               </button>
+               <Link to={`/job/${id}`}>
+                  <button className="btn text-white bg-gradient-to-r from-[#7E90FE] to-[#9873FF]">
+                     View Details
+                  </button>
+               </Link>
             </div>
          </div>
       </div>
