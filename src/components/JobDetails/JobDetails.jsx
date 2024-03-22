@@ -62,7 +62,7 @@ const JobDetails = () => {
                         <div className="flex items-center gap-2">
                            <FaSuitcase className="flex-shrink-0 text-primary"></FaSuitcase>
                            <p>
-                              Job <span className="font-bold">Title:</span>{" "}
+                              <span className="font-bold">Job Title: </span>
                               {job_title}
                            </p>
                         </div>
@@ -100,7 +100,7 @@ const JobDetails = () => {
 
                <div className="mt-6">
                   <button className="btn text-white bg-gradient-to-r from-[#7E90FE] to-[#9873FF] w-full">
-                     View Details
+                     Apply Now
                   </button>
                </div>
             </div>
