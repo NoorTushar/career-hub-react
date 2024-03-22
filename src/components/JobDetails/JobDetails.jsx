@@ -53,12 +53,18 @@ const JobDetails = () => {
                      <div className="divider"></div>
                      <div className="space-y-4">
                         <div className="flex items-center gap-2">
-                           <FaDollarSign className="flex-shrink-0"></FaDollarSign>
-                           <p>Salary: {salary} (Per Month)</p>
+                           <FaDollarSign className="flex-shrink-0 text-primary"></FaDollarSign>
+                           <p>
+                              <span className="font-bold">Salary:</span>{" "}
+                              {salary} (Per Month)
+                           </p>
                         </div>
                         <div className="flex items-center gap-2">
-                           <FaSuitcase className="flex-shrink-0"></FaSuitcase>
-                           <p>Job Title: {job_title}</p>
+                           <FaSuitcase className="flex-shrink-0 text-primary"></FaSuitcase>
+                           <p>
+                              Job <span className="font-bold">Title:</span>{" "}
+                              {job_title}
+                           </p>
                         </div>
                      </div>
                   </div>
@@ -70,16 +76,23 @@ const JobDetails = () => {
                      <div className="divider"></div>
                      <div className=" space-y-4">
                         <div className="flex items-center gap-2">
-                           <FaPhoneAlt className="flex-shrink-0"></FaPhoneAlt>
-                           <p>Phone: {phone}</p>
+                           <FaPhoneAlt className="flex-shrink-0 text-primary"></FaPhoneAlt>
+                           <p>
+                              <span className="font-bold">Phone:</span> {phone}
+                           </p>
                         </div>
                         <div className="flex items-center gap-2">
-                           <MdEmail className="flex-shrink-0"></MdEmail>
-                           <p>Email: {email}</p>
+                           <MdEmail className="flex-shrink-0 text-primary"></MdEmail>
+                           <p>
+                              <span className="font-bold">Email:</span> {email}
+                           </p>
                         </div>
                         <div className="flex items-center gap-2">
-                           <FaLocationDot className="flex-shrink-0"></FaLocationDot>
-                           <p>Address: {address}</p>
+                           <FaLocationDot className="flex-shrink-0 text-primary"></FaLocationDot>
+                           <p>
+                              <span className="font-bold">Address:</span>{" "}
+                              {address}
+                           </p>
                         </div>
                      </div>
                   </div>
