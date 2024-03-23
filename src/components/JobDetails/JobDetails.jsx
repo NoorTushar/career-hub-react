@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { FaDollarSign, FaSuitcase, FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { useState } from "react";
 
 const JobDetails = () => {
    // getting data from fetching in loader
@@ -9,7 +10,7 @@ const JobDetails = () => {
    const { id } = useParams();
 
    const job = jobs.find((job) => job.id === Number(id));
-   console.log(job);
+   //    console.log(job);
 
    const {
       job_description,
@@ -20,6 +21,38 @@ const JobDetails = () => {
       job_title,
       contact_information,
    } = job;
+   const [savedJobs, setSavedJobs] = useState([]);
+
+   const getItemFromStorage = (name) => {
+      const itemFromLocalStorage = JSON.parse(localStorage.getItem(name));
+      return itemFromLocalStorage;
+   };
+
+   const setItemToStorage = (name, value) => {
+      const setToLocalStorage = localStorage.setItem(
+         name,
+         JSON.stringify(value)
+      );
+
+      return setToLocalStorage;
+   };
+
+   const saveToStorage = (jobId) => {
+      const storedJobs = getItemFromStorage("jobs");
+
+      if (storedJobs) {
+         const isPresent = storedJobs.find((eachJob) => eachJob === jobId);
+         if (isPresent) {
+            alert("Item Already Added");
+         } else {
+            storedJobs.push(jobId);
+            setSavedJobs(storedJobs);
+            setItemToStorage("jobs", storedJobs);
+         }
+      } else {
+         localStorage.setItem("jobs", JSON.stringify([jobId]));
+      }
+   };
 
    const { address, email, phone } = contact_information;
    return (
@@ -99,7 +132,12 @@ const JobDetails = () => {
                </div>
 
                <div className="mt-6">
-                  <button className="btn text-white bg-gradient-to-r from-[#7E90FE] to-[#9873FF] w-full">
+                  <button
+                     onClick={() => {
+                        saveToStorage(job.id);
+                     }}
+                     className="btn text-white bg-gradient-to-r from-[#7E90FE] to-[#9873FF] w-full"
+                  >
                      Apply Now
                   </button>
                </div>
