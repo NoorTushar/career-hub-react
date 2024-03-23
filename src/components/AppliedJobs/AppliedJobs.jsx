@@ -3,12 +3,18 @@ import AppliedJob from "../AppliedJob/AppliedJob";
 import { useState } from "react";
 
 const AppliedJobs = () => {
-   const jobs = useLoaderData();
    const jobsFromStorage = JSON.parse(localStorage.getItem("jobs"));
+   let appliedJobs;
 
-   const appliedJobs = jobs.filter((eachJob) => {
-      return jobsFromStorage.includes(eachJob.id);
-   });
+   if (!jobsFromStorage) {
+      appliedJobs = [];
+   } else {
+      const jobs = useLoaderData();
+      appliedJobs = jobs.filter((eachJob) => {
+         return jobsFromStorage.includes(eachJob.id);
+      });
+   }
+
    // job.remote_or_onsite
    const [filteredJobs, SetFilteredJobs] = useState(appliedJobs);
    const [filterText, setFilterText] = useState("All");
